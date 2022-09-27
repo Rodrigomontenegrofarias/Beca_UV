@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover table-striped-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombre del Casino</th>
+                        <th>Becas Canjeadas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let casino of casinoService.casinos">
+                        <td>{{ casino.nombre }}</td>
+                        <td>{{ casino.cantidad }}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="agregar">
+                <a routerLink="/agregar-casino" style="color: rgb(41, 41, 155);">Agregar Casino</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
