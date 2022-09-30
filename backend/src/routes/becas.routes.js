@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import {
         agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos, 
-        agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos
+        agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos, verAlumnoRut, canjeAlumno
         } 
     from '../controllers/alumnos.controller'
 
