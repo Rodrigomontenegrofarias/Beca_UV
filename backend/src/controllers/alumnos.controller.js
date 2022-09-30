@@ -1,5 +1,6 @@
 import {getConnection, sql} from '../database/connection'
 
+// Peticiones Alumnos
 export const verAlumnos = async (req, res) => {
    const pool = await getConnection();
    const result = await pool.request().query('SELECT * FROM alumnos');
@@ -14,6 +15,17 @@ export const verAlumnoId = async (req, res) => {
    const result = await pool.request()
    .input('id', id)
    .query('SELECT * FROM alumnos WHERE id = @id')
+
+   res.send(result.recordset[0]);
+};
+
+export const verAlumnoRut = async (req, res) => {
+   const {rut} = req.params;
+
+   const pool = await getConnection();
+   const result = await pool.request()
+   .input('rut', rut)
+   .query('SELECT * FROM alumnos WHERE rut = @rut')
 
    res.send(result.recordset[0]);
 };
@@ -52,6 +64,18 @@ export const editarAlumno = async (req, res) => {
    .input("id", sql.Int, id)
    .query('UPDATE alumnos SET nombre = @nombre, rut = @rut, cantidad = @cantidad, fecha = @fecha WHERE id = @id');
 }
+// Peticion Canje de beca
+export const canjeAlumno = async (req, res) => {
+   const {rut} = req.params;
+
+   const pool = await getConnection();
+   await pool.request()
+   .input("rut", sql.NChar, rut)
+   .query('UPDATE alumnos SET cantidad = @cantidad, fecha = @fecha WHERE rut = @rut');
+}
+
+
+// Peticiones Casinos
 
 export const verCasinos = async (req, res) => {
    const pool = await getConnection();
