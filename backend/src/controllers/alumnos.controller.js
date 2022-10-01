@@ -36,7 +36,7 @@ export const agregarAlumno = async (req, res) =>{
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.NChar, rut)
+   .input("rut", sql.Int, rut)
    .input("cantidad", sql.Int, cantidad)
    .input("fecha", sql.Date, fecha)
    .query('INSERT INTO alumnos (nombre, rut, cantidad, fecha) VALUES (@nombre, @rut, @cantidad, @fecha)');
@@ -58,7 +58,7 @@ export const editarAlumno = async (req, res) => {
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.NChar, rut)
+   .input("rut", sql.Int, rut)
    .input("cantidad", sql.Int, cantidad)
    .input("fecha", sql.Date, fecha)
    .input("id", sql.Int, id)
@@ -70,8 +70,8 @@ export const canjeAlumno = async (req, res) => {
 
    const pool = await getConnection();
    await pool.request()
-   .input("rut", sql.NChar, rut)
-   .query('UPDATE alumnos SET cantidad = @cantidad, fecha = @fecha WHERE rut = @rut');
+   .input("rut", sql.Int, rut)
+   .query('UPDATE alumnos SET cantidad = @cantidad WHERE rut = @rut');
 }
 
 
