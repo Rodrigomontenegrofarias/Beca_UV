@@ -1,5 +1,6 @@
 import {getConnection, sql} from '../database/connection'
 
+// Peticiones Alumnos
 export const verAlumnos = async (req, res) => {
    const pool = await getConnection();
    const result = await pool.request().query('SELECT * FROM alumnos');
@@ -24,9 +25,9 @@ export const agregarAlumno = async (req, res) =>{
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.NChar, rut)
+   .input("rut", sql.VarChar, rut)
    .input("cantidad", sql.Int, cantidad)
-   .input("fecha", sql.Date, fecha)
+   .input("fecha", sql.VarChar, fecha)
    .query('INSERT INTO alumnos (nombre, rut, cantidad, fecha) VALUES (@nombre, @rut, @cantidad, @fecha)');
 };
 
@@ -46,12 +47,43 @@ export const editarAlumno = async (req, res) => {
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.NChar, rut)
+   .input("rut", sql.VarChar, rut)
    .input("cantidad", sql.Int, cantidad)
-   .input("fecha", sql.Date, fecha)
+   .input("fecha", sql.VarChar, fecha)
    .input("id", sql.Int, id)
    .query('UPDATE alumnos SET nombre = @nombre, rut = @rut, cantidad = @cantidad, fecha = @fecha WHERE id = @id');
 }
+
+// Peticion Canje de beca
+export const verCanjeRut = async (req, res) => {
+   const {rut} = req.params;
+
+   const pool = await getConnection();
+   const result = await pool.request()
+   .input('rut', rut)
+   .query('SELECT * FROM alumnos WHERE rut = @rut')
+   const respuesta = result.recordset.length;
+
+   if (respuesta === 1) {
+      res.send(result.recordset[0]);
+   }
+   else {
+      res.sendStatus(404)
+   }
+};
+
+export const canjeAlumno = async (req, res) => {
+   const {rut} = req.params;
+
+   const pool = await getConnection();
+   await pool.request()
+   .input("rut", rut)
+   .query('UPDATE alumnos SET cantidad = (cantidad - 1) WHERE rut = @rut')
+   res.sendStatus(201)
+}
+
+
+// Peticiones Casinos
 
 export const verCasinos = async (req, res) => {
    const pool = await getConnection();
