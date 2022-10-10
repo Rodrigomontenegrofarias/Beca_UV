@@ -19,26 +19,15 @@ export const verAlumnoId = async (req, res) => {
    res.send(result.recordset[0]);
 };
 
-export const verAlumnoRut = async (req, res) => {
-   const {rut} = req.params;
-
-   const pool = await getConnection();
-   const result = await pool.request()
-   .input('rut', rut)
-   .query('SELECT * FROM alumnos WHERE rut = @rut')
-
-   res.send(result.recordset[0]);
-};
-
 export const agregarAlumno = async (req, res) =>{
    let { nombre, rut, cantidad, fecha} = req.body;
 
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.Int, rut)
+   .input("rut", sql.VarChar, rut)
    .input("cantidad", sql.Int, cantidad)
-   .input("fecha", sql.Date, fecha)
+   .input("fecha", sql.VarChar, fecha)
    .query('INSERT INTO alumnos (nombre, rut, cantidad, fecha) VALUES (@nombre, @rut, @cantidad, @fecha)');
 };
 
@@ -58,20 +47,39 @@ export const editarAlumno = async (req, res) => {
    const pool = await getConnection();
    await pool.request()
    .input("nombre", sql.VarChar, nombre)
-   .input("rut", sql.Int, rut)
+   .input("rut", sql.VarChar, rut)
    .input("cantidad", sql.Int, cantidad)
-   .input("fecha", sql.Date, fecha)
+   .input("fecha", sql.VarChar, fecha)
    .input("id", sql.Int, id)
    .query('UPDATE alumnos SET nombre = @nombre, rut = @rut, cantidad = @cantidad, fecha = @fecha WHERE id = @id');
 }
+
 // Peticion Canje de beca
+export const verCanjeRut = async (req, res) => {
+   const {rut} = req.params;
+
+   const pool = await getConnection();
+   const result = await pool.request()
+   .input('rut', rut)
+   .query('SELECT * FROM alumnos WHERE rut = @rut')
+   const respuesta = result.recordset.length;
+
+   if (respuesta === 1) {
+      res.send(result.recordset[0]);
+   }
+   else {
+      res.sendStatus(404)
+   }
+};
+
 export const canjeAlumno = async (req, res) => {
    const {rut} = req.params;
 
    const pool = await getConnection();
    await pool.request()
-   .input("rut", sql.Int, rut)
-   .query('UPDATE alumnos SET cantidad = @cantidad WHERE rut = @rut');
+   .input("rut", rut)
+   .query('UPDATE alumnos SET cantidad = (cantidad - 1) WHERE rut = @rut')
+   res.sendStatus(201)
 }
 
 
