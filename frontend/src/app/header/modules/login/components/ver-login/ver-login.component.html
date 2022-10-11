@@ -1,1 +1,19 @@
-<p>ver-login works!</p>
+<div class="body">
+    <div class="login">
+        <form [formGroup]="form" (ngSubmit)="ingresar()">
+            <img src="assets/img/login.png" style="width: 40%;">
+            <br>
+            <br>
+            <mat-form-field appearance="fill" style="width: 80%;">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="usuario">
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 80%;">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="contraseña">
+            </mat-form-field>
+            <br>
+            <button type="submit" mat-raised-button color="primary" style="height: 50px; width: 80%; background-color: #04549c;">Ingresar</button>
+        </form>
+    </div>
+</div>
