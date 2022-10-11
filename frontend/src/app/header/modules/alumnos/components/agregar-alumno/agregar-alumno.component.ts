@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AlumnoService } from '../../../../../services/alumnos/alumno.service'
 
@@ -12,7 +13,8 @@ export class AgregarAlumnoComponent implements OnInit {
 
   constructor(
     public alumnoService: AlumnoService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -26,15 +28,31 @@ export class AgregarAlumnoComponent implements OnInit {
       );
       form.reset();
       this.router.navigate(['/']);
-      alert('Alumno editado correctamente');
+      this.msgEdit();
     } else {
       this.alumnoService.addAlumno(form.value).subscribe(
         res => console.log(res),
         err => console.error(err)
       );
       form.reset();
-      alert('Alumno agregado correctamente');
+      this.msgAdd();
     }
+  }
+
+  msgEdit(){
+    this._snackBar.open('Alumno editado correctamente', '', {
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+  
+  msgAdd(){
+    this._snackBar.open('Alumno agregado correctamente', '', {
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
   }
 
   public getCurrentUrl(): number {

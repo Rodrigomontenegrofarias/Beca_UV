@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 
@@ -9,7 +10,10 @@ import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 })
 export class AlumnoComponent implements OnInit {
 
-  constructor(public alumnoService: AlumnoService) { }
+  constructor(
+    public alumnoService: AlumnoService,
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.verAlumnos();
@@ -35,9 +39,17 @@ export class AlumnoComponent implements OnInit {
           console.log(res);
         },
         (err) => console.error(err) 
-      );
-      alert('El alumno se ha eliminado correctamente');
+        );
+      this.msgDelete();
       this.verAlumnos();
     }
+  }
+
+  msgDelete(){
+    this._snackBar.open('El alumno se ha eliminado correctamente', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
   }
 }
