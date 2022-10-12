@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import {
         agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos, 
-        agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos, verAlumnoRut, canjeAlumno, verCanjeRut
+        agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos, canjeAlumno, verCanjeRut, agregrarUsuario, loginUsuario, agregarUsuario
         } 
     from '../controllers/alumnos.controller'
 
@@ -24,5 +24,9 @@ router.put('/casinos/:id', editarCasino);
 //endpoint canjes en la raspberry
 router.get('/canjes/:rut', verCanjeRut);
 router.patch('/canjes/:rut', canjeAlumno);
+
+//endpoint login
+router.get('/login', loginUsuario);
+router.post('/login', agregarUsuario);
 
 export default router
