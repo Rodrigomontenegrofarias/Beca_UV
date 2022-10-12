@@ -2,6 +2,8 @@
 @api2 = http://localhost:4000/casinos
 @api3 = http://localhost:4000/canjes
 
+@api4 = http://localhost:4000/login
+
 GET {{api}}
 
 ###
@@ -52,3 +54,16 @@ GET {{api3}}/17760740-1
 
 ###
 PATCH {{api3}}/17760740-1
+
+###
+GET {{api4}}
+
+###
+POST {{api4}}
+Content-Type: application/json
+
+{
+    "usuario": "Pedro",
+    "password": "15",
+    "role": "admin"
+}

@@ -133,3 +133,22 @@ export const editarCasino = async (req, res) => {
    .input("id", sql.Int, id)
    .query('UPDATE casinos SET nombre = @nombre, cantidad = @cantidad WHERE id = @id');
 }
+
+//peticiones login
+export const loginUsuario = async (req, res) => {
+   const pool = await getConnection();
+   const result = await pool.request().query('SELECT * FROM users');
+
+   res.json(result.recordset);
+};
+
+export const agregarUsuario = async (req, res) =>{
+   let { usuario, password, role} = req.body;
+
+   const pool = await getConnection();
+   await pool.request()
+   .input("usuario", sql.VarChar, usuario)
+   .input("password", sql.VarChar, password)
+   .input("role", sql.VarChar, role)
+   .query('INSERT INTO users (usuario, password, role) VALUES (@usuario, @password, @role)');
+};
