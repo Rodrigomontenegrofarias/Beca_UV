@@ -56,7 +56,7 @@ GET {{api3}}/17760740-1
 PATCH {{api3}}/17760740-1
 
 ###
-GET {{api4}}
+GET {{api4}}/Pedro
 
 ###
 POST {{api4}}
