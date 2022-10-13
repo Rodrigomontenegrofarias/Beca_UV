@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
 
 import { CasinosRoutingModule } from './casinos-routing.module';
 import { CasinosComponent } from './casinos.component';
@@ -24,8 +23,7 @@ import { AgregarCasinosContainerComponent } from './containers/agregar-casinos-c
   imports: [
     CommonModule,
     CasinosRoutingModule,
-    FormsModule,
-    MatIconModule
+    FormsModule
   ]
 })
 export class CasinosModule { }
