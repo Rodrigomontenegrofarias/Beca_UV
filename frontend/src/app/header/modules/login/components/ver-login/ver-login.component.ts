@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,8 +12,10 @@ import { Router } from '@angular/router';
 export class VerLoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
+  url_api = 'http://localhost:4000/login'
 
   constructor(
+    private http: HttpClient,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router
@@ -31,21 +34,26 @@ export class VerLoginComponent implements OnInit {
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
 
-    // peticion get
+    this.http.get(`${this.url_api}/${usuario}`).subscribe(
+      res => {
+        let respuesta=(Object.values(res));
+        let Usuario=respuesta[1];
+        let Password = respuesta[2];
 
-    // condicion
-
-    // redireccionamos
-
-    //else
-    this.isLoading();
-    //this.error();
-    
-
+        if (Usuario == usuario && Password == password) {
+          this.isLoading();
+        }
+        else {
+          this.error();
+          this.form.reset();
+        }
+      },
+      err => this.error()
+    );
   }
 
   error(){
-    this._snackBar.open('Error', '', {
+    this._snackBar.open('Usuario o contraseña inválida', '', {
       duration: 4000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -57,7 +65,7 @@ export class VerLoginComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/']);
       this.loading = false
-  },1500);
+  },2000);
   }
 
 }

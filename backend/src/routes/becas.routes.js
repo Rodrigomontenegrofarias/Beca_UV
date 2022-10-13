@@ -26,7 +26,7 @@ router.get('/canjes/:rut', verCanjeRut);
 router.patch('/canjes/:rut', canjeAlumno);
 
 //endpoint login
-router.get('/login', loginUsuario);
+router.get('/login/:usuario', loginUsuario);
 router.post('/login', agregarUsuario);
 
 export default router
