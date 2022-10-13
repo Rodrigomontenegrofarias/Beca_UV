@@ -136,10 +136,14 @@ export const editarCasino = async (req, res) => {
 
 //peticiones login
 export const loginUsuario = async (req, res) => {
-   const pool = await getConnection();
-   const result = await pool.request().query('SELECT * FROM users');
+   const {usuario} = req.params;
 
-   res.json(result.recordset);
+   const pool = await getConnection();
+   const result = await pool.request()
+   .input('usuario', usuario)
+   .query('SELECT * FROM users WHERE usuario = @usuario')
+
+   res.send(result.recordset[0]);
 };
 
 export const agregarUsuario = async (req, res) =>{
