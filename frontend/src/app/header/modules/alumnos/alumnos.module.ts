@@ -9,6 +9,7 @@ import { ContainersComponent } from './containers/alumnos-containers/containers.
 import { RouterModule } from '@angular/router';
 import { AgregarAlumnoComponent } from './components/agregar-alumno/agregar-alumno.component';
 import { AgregarAlumnoContainerComponent } from './containers/agregar-alumno-container/agregar-alumno-container.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AgregarAlumnoContainerComponent } from './containers/agregar-alumno-con
     AlumnosRoutingModule,
     RouterModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class AlumnosModule { }

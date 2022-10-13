@@ -9,6 +9,7 @@ import { VerCasinosContainerComponent } from './containers/ver-casinos-container
 import { VerCasinosScreenComponent } from './screens/ver-casinos-screen/ver-casinos-screen.component';
 import { AgregarCasinosComponent } from './components/agregar-casinos/agregar-casinos.component';
 import { AgregarCasinosContainerComponent } from './containers/agregar-casinos-container/agregar-casinos-container.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 /* import {  } from ''; */
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AgregarCasinosContainerComponent } from './containers/agregar-casinos-c
   imports: [
     CommonModule,
     CasinosRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class CasinosModule { }

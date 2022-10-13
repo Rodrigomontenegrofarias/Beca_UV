@@ -6,6 +6,7 @@ import { VerLoginComponent } from './components/ver-login/ver-login.component';
 import { LoginContainerComponent } from './containers/login-container/login-container.component';
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { LoginRoutingModule } from './login-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -18,7 +19,8 @@ import { LoginRoutingModule } from './login-routing.module';
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    SharedModule
   ]
 })
 export class LoginModule { }
