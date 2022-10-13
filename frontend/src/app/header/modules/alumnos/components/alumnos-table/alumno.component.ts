@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 
@@ -9,10 +11,18 @@ import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
   styleUrls: ['./alumno.component.scss']
 })
 export class AlumnoComponent implements OnInit {
+  displayedColumns: string[] = ['nombre', 'rut', 'cantidad', 'fecha', 'acciones'];
+  dataSource = new MatTableDataSource<Alumno>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   constructor(
     public alumnoService: AlumnoService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +32,7 @@ export class AlumnoComponent implements OnInit {
   verAlumnos() {
     this.alumnoService.getAlumnos().subscribe(
         res => {
-          this.alumnoService.alumnos = res;
+          this.dataSource.data = res;
         },
         err => console.log(err)
     )
@@ -46,7 +56,7 @@ export class AlumnoComponent implements OnInit {
   }
 
   msgDelete(){
-    this._snackBar.open('El alumno se ha eliminado correctamente', '', {
+    this.snackBar.open('El alumno se ha eliminado correctamente', '', {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
