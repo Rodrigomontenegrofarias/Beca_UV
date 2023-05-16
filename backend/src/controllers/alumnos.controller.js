@@ -1,4 +1,7 @@
 import {getConnection, sql} from '../database/connection'
+import {hashPassword, verifyPassword} from '../middlewares/hash'
+
+const bcrypt = require('bcrypt');
 
 // Peticiones Alumnos
 export const verAlumnos = async (req, res) => {
@@ -136,18 +139,28 @@ export const editarCasino = async (req, res) => {
 
 //peticiones login
 export const loginUsuario = async (req, res) => {
-   const {usuario} = req.params;
+   let { usuario, password} = req.body;
 
    const pool = await getConnection();
    const result = await pool.request()
-   .input('usuario', usuario)
-   .query('SELECT * FROM users WHERE usuario = @usuario')
+   .input("usuario", sql.VarChar, usuario)
+   .query('SELECT password FROM users WHERE (usuario = @usuario)');
 
-   res.send(result.recordset[0]);
+
+   console.log(result);
+   /* const isMatch = await verifyPassword(password, result.recordset[0].password);
+   console.log(isMatch)
+
+   if (isMatch){
+      res.sendStatus(201);      
+   } else {
+      res.sendStatus(404);
+   } */
 };
 
 export const agregarUsuario = async (req, res) =>{
-   let { usuario, password, role} = req.body;
+   var { usuario, password, role} = req.body;
+   password = await hashPassword(password);
 
    const pool = await getConnection();
    await pool.request()

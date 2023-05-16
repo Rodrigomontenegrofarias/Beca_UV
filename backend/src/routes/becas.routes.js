@@ -5,6 +5,8 @@ import {
         } 
     from '../controllers/alumnos.controller'
 
+const { checkApiKey } = require('../middlewares/auth')
+
 const router = Router()
 
 //endpoint alumnos
@@ -26,7 +28,7 @@ router.get('/canjes/:rut', verCanjeRut);
 router.patch('/canjes/:rut', canjeAlumno);
 
 //endpoint login
-router.get('/login/:usuario', loginUsuario);
-router.post('/login', agregarUsuario);
+router.post('/login', loginUsuario);
+router.post('/register', agregarUsuario);
 
 export default router

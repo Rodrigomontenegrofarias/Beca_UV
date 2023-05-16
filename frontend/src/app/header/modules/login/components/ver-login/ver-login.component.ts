@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../../../services/login/login.service';
 
 @Component({
   selector: 'app-ver-login',
@@ -12,15 +12,13 @@ import { Router } from '@angular/router';
 export class VerLoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
-  url_api = 'http://localhost:4000/login'
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    private router: Router
-  ) 
-  { 
+    private router: Router,
+    public loginService: LoginService
+  ) { 
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -30,26 +28,29 @@ export class VerLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresar(){
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.password;
+   ingresar(){
 
-    this.http.get(`${this.url_api}/${usuario}`).subscribe(
-      res => {
-        let respuesta=(Object.values(res));
-        let Usuario=respuesta[1];
-        let Password = respuesta[2];
+    /* const usuario = this.form.value.usuario;
+    const password = this.form.value.password; */
+    var user = this.form.value
+    if(user.usuario.length == 0 || user.password.length == 0){
+      this.error();
+    } else {
+      let respuesta;
+      this.loginService.loginUser(user).subscribe(
+        res => respuesta = res,
+        err => console.error(err)
+      );
+  
+      if (respuesta == 201) {
+        this.isLoading();
+      }
+      else {
+        this.error();
+        this.form.reset();
+      }
+    }
 
-        if (Usuario == usuario && Password == password) {
-          this.isLoading();
-        }
-        else {
-          this.error();
-          this.form.reset();
-        }
-      },
-      err => this.error()
-    );
   }
 
   error(){
