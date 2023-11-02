@@ -65,7 +65,7 @@ POST {{api5}}
 Content-Type: application/json
 
 {
-    "usuario": "Piter",
-    "password": "12345",
-    "role": "admin"
+    "usuario": "piter2",
+    "password": "1234567",
+    "role": "user"
 }

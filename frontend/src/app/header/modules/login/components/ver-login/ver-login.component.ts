@@ -28,27 +28,29 @@ export class VerLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   ingresar(){
+  ingresar(){
 
     /* const usuario = this.form.value.usuario;
     const password = this.form.value.password; */
-    var user = this.form.value
+    let user = this.form.value;
     if(user.usuario.length == 0 || user.password.length == 0){
       this.error();
     } else {
       let respuesta;
       this.loginService.loginUser(user).subscribe(
-        res => respuesta = res,
+        res => {
+          respuesta = res;
+          console.log(respuesta)
+
+  
+          /* if (respuesta) {
+            this.isLoading();
+          } else {
+            this.error();
+          } */
+        },
         err => console.error(err)
       );
-  
-      if (respuesta == 201) {
-        this.isLoading();
-      }
-      else {
-        this.error();
-        this.form.reset();
-      }
     }
 
   }

@@ -1,16 +1,15 @@
 import {Router} from 'express'
-import {
-        agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos, 
-        agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos, canjeAlumno, verCanjeRut, agregrarUsuario, loginUsuario, agregarUsuario
-        } 
-    from '../controllers/alumnos.controller'
+import {agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos} from '../controllers/alumnos.controller'
+import {agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos} from '../controllers/casinos.controller'
+import {canjeAlumno, verCanjeRut} from '../controllers/canjes.controller'
+import {loginUsuario, agregarUsuario} from '../controllers/login.controller'
 
-const { checkApiKey } = require('../middlewares/auth')
+const { checkApiKey, checkToken } = require('../middlewares/auth')
 
 const router = Router()
 
 //endpoint alumnos
-router.get('/alumnos', verAlumnos);
+router.get('/alumnos', checkToken, verAlumnos);
 router.get('/alumnos/:id', verAlumnoId);
 router.post('/alumnos', agregarAlumno);
 router.delete('/alumnos/:id', borrarAlumno);
