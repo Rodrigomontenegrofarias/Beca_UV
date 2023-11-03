@@ -4,6 +4,8 @@
 
 @api4 = http://localhost:4000/login
 
+@api5 = http://localhost:4000/register
+
 GET {{api}}
 
 ###
@@ -56,14 +58,14 @@ GET {{api3}}/17760740-1
 PATCH {{api3}}/17760740-1
 
 ###
-GET {{api4}}/Pedro
+POST {{api4}}/Pedro
 
 ###
-POST {{api4}}
+POST {{api5}}
 Content-Type: application/json
 
 {
-    "usuario": "Pedro",
-    "password": "15",
-    "role": "admin"
+    "usuario": "piter2",
+    "password": "1234567",
+    "role": "user"
 }
