@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../../../services/login/login.service';
+import { Login } from 'src/app/models/user';
 
 @Component({
   selector: 'app-ver-login',
@@ -36,18 +37,19 @@ export class VerLoginComponent implements OnInit {
     if(user.usuario.length == 0 || user.password.length == 0){
       this.error();
     } else {
-      let respuesta;
+      let respuesta: Login = {
+        token: ''
+      };
       this.loginService.loginUser(user).subscribe(
         res => {
           respuesta = res;
-          console.log(respuesta)
 
-  
-          /* if (respuesta) {
+          if (respuesta.token) {
+            localStorage.setItem('token_login', respuesta.token);
             this.isLoading();
           } else {
             this.error();
-          } */
+          }
         },
         err => console.error(err)
       );

@@ -15,10 +15,17 @@ export const loginUsuario = async (req, res) => {
     if (user.recordset.length > 0) {
        isMatch = await verifyPassword(password, user.recordset[0].password);
     }
-    res.json({
-      success: isMatch,
-      token: createToken(user)
-    });
+
+    if (isMatch) {
+       const tokenPromise = createToken(user);
+       tokenPromise.then((value) => {
+         res.json({
+            token: value
+         });
+       });
+    } else {
+      return res.json({ error: 'Usuario o contraseña incorrecta' });
+    }
  };
  
  export const agregarUsuario = async (req, res) =>{

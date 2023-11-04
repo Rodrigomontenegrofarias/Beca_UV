@@ -4,3 +4,7 @@ export interface User{
     role?: string,
     id?: string
 }
+
+export interface Login{
+    token?: string
+}
