@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort'; 
 import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatCardModule} from '@angular/material/card'; 
 
 
 
@@ -34,7 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ],
   exports: [
     MatIconModule,
@@ -49,7 +51,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

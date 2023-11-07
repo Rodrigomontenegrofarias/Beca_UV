@@ -15,4 +15,7 @@ export class LoginService {
     return this.http.post(this.url_api, user);
   }
 
+  isLogged(): boolean{
+    return localStorage.getItem('token_login') ? true : false;
+  }
 }
