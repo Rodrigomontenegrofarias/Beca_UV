@@ -20,7 +20,8 @@ export const loginUsuario = async (req, res) => {
        const tokenPromise = createToken(user);
        tokenPromise.then((value) => {
          res.json({
-            token: value
+            token: value,
+            role: user.recordset[0].role
          });
        });
     } else {

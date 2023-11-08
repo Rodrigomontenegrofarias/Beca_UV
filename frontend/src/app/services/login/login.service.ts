@@ -18,4 +18,13 @@ export class LoginService {
   isLogged(): boolean{
     return localStorage.getItem('token_login') ? true : false;
   }
+
+  rolesAccess(): boolean{
+    const role = localStorage.getItem('role');
+    if (role != 'user') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

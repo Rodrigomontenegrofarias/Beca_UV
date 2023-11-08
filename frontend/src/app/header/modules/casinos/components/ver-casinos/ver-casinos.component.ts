@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Casino } from 'src/app/models/casino';
 import { CasinoService } from '../../../../../services/casinos/casinos.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-ver-casinos',
@@ -9,7 +10,10 @@ import { CasinoService } from '../../../../../services/casinos/casinos.service';
 })
 export class VerCasinosComponent implements OnInit {
 
-  constructor(public casinoService: CasinoService) { }
+  constructor(
+    public casinoService: CasinoService,
+    public loginService: LoginService
+    ) { }
 
   ngOnInit(): void {
     this.verCasinos();

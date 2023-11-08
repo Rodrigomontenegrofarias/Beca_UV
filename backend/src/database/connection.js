@@ -1,10 +1,11 @@
 import sql from 'mssql'
+import config from '../config'
 
 const dbSettings = {
-    user: 'becas',
-    password: 'BecasUV',
-    server: 'localhost',
-    database: 'becas_uv',
+    user: config.user,
+    password: config.password,
+    server: config.server,
+    database: config.database,
     options: {
         encrypt: true, // for azure
         trustServerCertificate: true // change to true for local dev / self-signed certs

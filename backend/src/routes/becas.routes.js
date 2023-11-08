@@ -10,10 +10,10 @@ const router = Router()
 
 //endpoint alumnos
 router.get('/alumnos', checkToken, verAlumnos);
-router.get('/alumnos/:id', verAlumnoId);
-router.post('/alumnos', agregarAlumno);
-router.delete('/alumnos/:id', borrarAlumno);
-router.put('/alumnos/:id', editarAlumno);
+router.get('/alumnos/:id', checkToken, verAlumnoId);
+router.post('/alumnos', checkToken, agregarAlumno);
+router.delete('/alumnos/:id',checkToken, borrarAlumno);
+router.put('/alumnos/:id', checkToken, editarAlumno);
 
 //endpoint casinos
 router.get('/casinos', verCasinos);

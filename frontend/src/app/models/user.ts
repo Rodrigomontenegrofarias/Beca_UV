@@ -5,6 +5,7 @@ export interface User{
     id?: string
 }
 
-export interface Login{
-    token?: string
-}
+/* export interface Login{
+    token: string,
+    role: string
+} */

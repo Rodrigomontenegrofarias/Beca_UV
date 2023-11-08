@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-alumno',
@@ -22,7 +23,8 @@ export class AlumnoComponent implements OnInit {
 
   constructor(
     public alumnoService: AlumnoService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public loginService: LoginService
   ) { }
 
   ngOnInit(): void {
