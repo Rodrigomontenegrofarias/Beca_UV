@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
     this.loading = true;
     setTimeout(() => {
       localStorage.removeItem('token_login');
+      localStorage.removeItem('role');
       this.router.navigate(['/login']);
       this.loading = false;
   },2000);
