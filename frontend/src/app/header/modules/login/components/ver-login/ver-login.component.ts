@@ -36,18 +36,21 @@ export class VerLoginComponent implements OnInit {
     if(user.usuario.length == 0 || user.password.length == 0){
       this.error();
     } else {
-      let respuesta;
+      let respuesta: any = {
+        token: '',
+        role: ''
+      };
       this.loginService.loginUser(user).subscribe(
         res => {
           respuesta = res;
-          console.log(respuesta)
 
-  
-          /* if (respuesta) {
+          if (respuesta.token) {
+            localStorage.setItem('token_login', respuesta.token);
+            localStorage.setItem('role', respuesta.role);
             this.isLoading();
           } else {
             this.error();
-          } */
+          }
         },
         err => console.error(err)
       );

@@ -6,10 +6,8 @@ export const createToken = async (user) => {
 
     return jwt.sign(
         {
-            id: 1,
-            role: 'admin'
-            /* id: user.recordset[0].userID,
-            role: user.recordset[0].role */
+            id: user.recordset[0].userID,
+            role: user.recordset[0].role
         },
         config.apikey,
         {

@@ -1,20 +1,22 @@
 <div class="body">
     <div class="login">
-        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
-            <img src="assets/img/login.png" style="width: 40%;">
-            <br>
-            <br>
-            <mat-form-field appearance="fill" style="width: 80%;">
-                <mat-label>Usuario</mat-label>
-                <input matInput formControlName="usuario">
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 80%;">
-                <mat-label>Contraseña</mat-label>
-                <input type="password" matInput formControlName="password">
-            </mat-form-field>
-            <br>
-            <button type="submit" mat-raised-button color="primary" style="height: 50px; width: 80%; background-color: #04549c;">Ingresar</button>
-        </form>
-        <mat-spinner *ngIf="loading" class="loading" diameter="60"></mat-spinner>
+        <mat-card *ngIf="!loading">
+            <form [formGroup]="form" (ngSubmit)="ingresar()">
+                <img src="assets/img/login.png" style="width: 40%;">
+                <br>
+                <br>
+                <mat-form-field appearance="fill" style="width: 80%;">
+                    <mat-label>Usuario</mat-label>
+                    <input matInput formControlName="usuario">
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="width: 80%;">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-raised-button color="primary" style="height: 50px; width: 80%; background-color: #04549c;">Ingresar</button>
+            </form>
+        </mat-card>
+        <mat-spinner *ngIf="loading" class="loading" diameter="60" style="background-color: white;"></mat-spinner>
     </div>
 </div>

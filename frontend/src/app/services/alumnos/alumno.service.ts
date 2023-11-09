@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Alumno} from '../../models/alumno';
 
 @Injectable({
@@ -20,18 +20,27 @@ export class AlumnoService {
   alumnos!: Alumno[];
 
   getAlumnos() {
-    return this.http.get<Alumno[]>(this.url_api);
+    return this.http.get<Alumno[]>(this.url_api, this.createHeaders());
   }
 
   addAlumno(alumno: Alumno) {
-    return this.http.post(this.url_api, alumno);
+    return this.http.post(this.url_api, alumno, this.createHeaders());
   }
 
   updateAlumno(alumno: Alumno) {
-    return this.http.put(`${this.url_api}/${alumno.id}`, alumno);
+    return this.http.put(`${this.url_api}/${alumno.id}`, alumno, this.createHeaders());
   }
 
   deleteAlumno(id: string) {
-    return this.http.delete(`${this.url_api}/${id}`);
+    return this.http.delete(`${this.url_api}/${id}`, this.createHeaders());
   }
+
+  createHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_login')!
+      })
+    }
+  }
+
 }

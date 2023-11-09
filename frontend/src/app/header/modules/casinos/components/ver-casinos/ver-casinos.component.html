@@ -15,16 +15,19 @@
                         <td>{{ casino.nombre }}</td>
                         <td>{{ casino.cantidad }}</td>
                         <td>
-                            <button class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
+                            <button *ngIf="loginService.rolesAccess()" class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="agregar">
-                <a routerLink="/agregar-casino" style="color: rgb(41, 41, 155);">Agregar Casino</a>
-            </div>
+            <div class="col-12" style="text-align: right;">
+          <button *ngIf="loginService.rolesAccess()" class="btn btn-primary agregar" [routerLink]="['/agregar-casino']">
+            Agregar nuevo casino
+            <mat-icon style="vertical-align: middle;">add</mat-icon>
+          </button>
+        </div>
         </div>
       </div>
     </div>

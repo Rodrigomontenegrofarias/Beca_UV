@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   loading = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    public loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -17,8 +21,9 @@ export class HeaderComponent implements OnInit {
   isLoading(){
     this.loading = true;
     setTimeout(() => {
+      localStorage.removeItem('token_login');
       this.router.navigate(['/login']);
-      this.loading = false
+      this.loading = false;
   },2000);
   }
 

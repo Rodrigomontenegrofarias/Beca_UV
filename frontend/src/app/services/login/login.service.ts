@@ -15,4 +15,16 @@ export class LoginService {
     return this.http.post(this.url_api, user);
   }
 
+  isLogged(): boolean{
+    return localStorage.getItem('token_login') ? true : false;
+  }
+
+  rolesAccess(): boolean{
+    const role = localStorage.getItem('role');
+    if (role === 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
