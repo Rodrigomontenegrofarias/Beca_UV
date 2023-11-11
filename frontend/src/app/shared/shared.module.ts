@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort'; 
 import {MatTooltipModule} from '@angular/material/tooltip'; 
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -36,7 +38,10 @@ import {MatCardModule} from '@angular/material/card';
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    DatePipe,
+    MatDividerModule
   ],
   exports: [
     MatIconModule,
@@ -52,7 +57,10 @@ import {MatCardModule} from '@angular/material/card';
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    DatePipe,
+    MatDividerModule
   ]
 })
 export class SharedModule { }

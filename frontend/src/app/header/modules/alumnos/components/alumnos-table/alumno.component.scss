@@ -15,11 +15,15 @@ table{
 
 .agregar{
     font-size: large;
-    margin-right: 7%;
+    margin-right: 4%;
     margin-top: 2%;
     color: white;
     border-color: #1312126c;
     background-color: #04549c;
+}
+
+.agregar:hover{
+    background-color: #04559ce8;
 }
 
 .mat-form-field {
@@ -36,3 +40,19 @@ th.mat-header-cell, td.mat-cell {
     text-align: center !important;
     font-size: 14px;
   }
+
+@media screen and (max-width: 412px){
+    .edit{
+        width:30px;
+        height:30px;
+    }
+    .delete{
+        width:30px;
+        height:30px;
+    }
+    .icono{
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+    }
+}

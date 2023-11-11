@@ -14,8 +14,8 @@
           </div>
           
 
-          <div class="mat-elevation-z10">
-            <table mat-table [dataSource]="dataSource">
+          <div class="mat-elevation-z10 table-responsive">
+            <table mat-table [dataSource]="dataSource" class="table-sm">
               
                 <ng-container matColumnDef="nombre">
                   <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -41,12 +41,16 @@
                   <th mat-header-cell *matHeaderCellDef> Acciones </th>
                   <td mat-cell *matCellDef="let element">
                     <button *ngIf="loginService.rolesAccess()" matTooltip="Editar alumno" class="btn btn-primary btn-sm edit" (click)="editarAlumno(element)" [routerLink]="['/editar-alumno']">
-                        <mat-icon>edit</mat-icon>
+                        <div class="icono">
+                          <mat-icon class="icono">edit</mat-icon>
+                        </div>
                     </button>
                     <button *ngIf="loginService.rolesAccess()" matTooltip="Eliminar alumno" class="btn btn-danger btn-sm delete" (click)="borrarAlumno(element.id)">
-                        <mat-icon>delete</mat-icon>
+                        <div class="icono">
+                          <mat-icon class="icono">delete</mat-icon>
+                        </div>
                     </button>
-                    <button matTooltip="{{element.cantidad}} canjes en el mes" class="btn btn-sm" style="border-color: white;">
+                    <button *ngIf="!loginService.rolesAccess()" matTooltip="{{element.cantidad}} canjes en el mes" class="btn btn-sm" style="border-color: white;">
                         <mat-icon>visibility</mat-icon>
                     </button>
                   </td>
