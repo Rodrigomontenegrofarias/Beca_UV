@@ -28,6 +28,14 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
+          import('./modules/documentos/documentos.module').then(
+            (m) => m.DocumentosModule
+          ),
+          canActivate: [permisosGuard],
+      },
+      {
+        path: '',
+        loadChildren: () =>
           import('./modules/login/login.module').then((m) => m.LoginModule),
       },
     ],

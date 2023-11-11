@@ -2,7 +2,9 @@
     <div class="login">
         <mat-card *ngIf="!loading">
             <form [formGroup]="form" (ngSubmit)="ingresar()">
-                <img src="assets/img/login.png" style="width: 40%;">
+                <h1 style="font-family: Arial;">Iniciar sesión</h1>
+                <br>
+                <img src="assets/img/login.png" style="width: 30%; background-color: black; border-radius: 50px;">
                 <br>
                 <br>
                 <mat-form-field appearance="fill" style="width: 80%;">
@@ -17,6 +19,6 @@
                 <button type="submit" mat-raised-button color="primary" style="height: 50px; width: 80%; background-color: #04549c;">Ingresar</button>
             </form>
         </mat-card>
-        <mat-spinner *ngIf="loading" class="loading" diameter="60" style="background-color: white;"></mat-spinner>
+        <mat-spinner *ngIf="loading" class="loading" diameter="60"></mat-spinner>
     </div>
 </div>

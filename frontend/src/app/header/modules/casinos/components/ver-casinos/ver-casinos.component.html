@@ -7,7 +7,7 @@
                     <tr>
                         <th>Nombre del Casino</th>
                         <th>Becas Canjeadas</th>
-                        <th>Acciones</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -15,7 +15,7 @@
                         <td>{{ casino.nombre }}</td>
                         <td>{{ casino.cantidad }}</td>
                         <td>
-                            <button *ngIf="loginService.rolesAccess()" class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
+                            <button *ngIf="loginService.rolesAccess()" matTooltip="Eliminar casino" class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>

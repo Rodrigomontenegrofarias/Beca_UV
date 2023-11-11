@@ -20,8 +20,8 @@ export class LoginService {
   }
 
   rolesAccess(): boolean{
-    const role = localStorage.getItem('role');
-    if (role === 'admin') {
+    let role = localStorage.getItem('role');
+    if (role === 'admin          ') {
       return true;
     } else {
       return false;
