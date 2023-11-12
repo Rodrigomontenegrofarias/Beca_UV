@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'rol', 'acciones'];
+  displayedColumns: string[] = ['usuario', 'casino', 'acciones'];
   dataSource = new MatTableDataSource<User>;
 
   constructor(
@@ -37,8 +37,8 @@ export class UsuariosComponent implements OnInit {
     this.adminService.selectUser = user;
   }
 
-  borrarAlumno(id: string) {
-    if (confirm('¿Desea eliminar este alumno?')){
+  borrarUsuario(id: string) {
+    if (confirm('¿Desea eliminar este usuario?')){
       this.adminService.deleteUser(id).subscribe(
         (res) => {
           console.log(res);

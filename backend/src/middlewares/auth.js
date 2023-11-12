@@ -32,3 +32,17 @@ export const checkToken = (req, res, next) => {
 
     next();
 }
+
+export const checkKey = (req, res, next) => {
+    if (!req.headers['authorization']){
+        return res.json({error: 'acceso denegado'});
+    }
+
+    const key = req.headers['authorization'];
+
+    if(key != config.apikey){
+        return res.json({error: 'acceso inválido'})
+    }
+
+    next();
+}

@@ -12,10 +12,10 @@ export class AdminService {
   url_api = 'http://localhost:4000/admin'
 
   selectUser: User = {
+    id: '',
     usuario: '',
     password: '',
-    role: '',
-    id: ''
+    role: ''
   };
   user!: User[];
 
