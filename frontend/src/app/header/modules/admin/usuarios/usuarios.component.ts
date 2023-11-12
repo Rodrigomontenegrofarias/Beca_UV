@@ -1,0 +1,61 @@
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from 'src/app/models/user';
+import { AdminService } from 'src/app/services/admin/admin.service';
+import { LoginService } from 'src/app/services/login/login.service';
+
+@Component({
+  selector: 'app-usuarios',
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.scss']
+})
+export class UsuariosComponent implements OnInit {
+  displayedColumns: string[] = ['nombre', 'rol', 'acciones'];
+  dataSource = new MatTableDataSource<User>;
+
+  constructor(
+    public adminService: AdminService,
+    private snackBar: MatSnackBar,
+    public loginService: LoginService
+  ) { }
+
+  ngOnInit(): void {
+    this.verUsuarios();
+  }
+  
+  verUsuarios() {
+    this.adminService.getUser().subscribe(
+        res => {
+          this.dataSource.data = res;
+        },
+        err => console.log(err)
+    )
+  }
+
+  editarUsuario(user: User) {
+    this.adminService.selectUser = user;
+  }
+
+  borrarAlumno(id: string) {
+    if (confirm('¿Desea eliminar este alumno?')){
+      this.adminService.deleteUser(id).subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => console.error(err) 
+        );
+      this.msgDelete();
+      this.verUsuarios();
+    }
+  }
+
+  msgDelete(){
+    this.snackBar.open('El usuario ha sido eliminado correctamente', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
+}
