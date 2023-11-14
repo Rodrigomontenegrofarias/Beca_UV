@@ -29,10 +29,10 @@ router.patch('/canjes/:rut', canjeAlumno);
 //endpoint login
 router.post('/login', loginUsuario);
 //endpoint admin
-router.get('/admin', checkToken, verUsuarios);
-router.get('/alumnos/:id', checkToken, verUsuarioId);
-router.post('/admin', checkKey, agregarUsuario);
-router.delete('/admin/:id',checkToken, borrarUsuario);
-router.put('/alumnos/:id', checkToken, editarUsuario);
+router.get('/admin', verUsuarios);
+router.get('/admin/:id', verUsuarioId);
+router.post('/admin', agregarUsuario);
+router.delete('/admin/:id', borrarUsuario);
+router.put('/admin/:id', editarUsuario);
 
 export default router;

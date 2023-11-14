@@ -35,13 +35,17 @@ export const checkToken = (req, res, next) => {
 
 export const checkKey = (req, res, next) => {
     if (!req.headers['authorization']){
-        return res.json({error: 'acceso denegado'});
+        return res.json({error: 'cabecera inválida'});
     }
 
-    const key = req.headers['authorization'];
+    const token = req.headers['authorization'];
 
-    if(key != config.apikey){
-        return res.json({error: 'acceso inválido'})
+    let payload;
+    try {
+        payload = jwt.verify(token, config.apikey);
+        console.log(payload);
+    } catch (error) {
+        return res.json({error: 'token inválido'})
     }
 
     next();
