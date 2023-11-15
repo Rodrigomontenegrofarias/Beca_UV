@@ -55,4 +55,19 @@ th.mat-header-cell, td.mat-cell {
         display: flex;
         justify-content: center;
     }
+
+    th.mat-header-cell, td.mat-cell {
+        text-align: center !important;
+        font-size: 11px;
+      }
+
+    .agregar{
+        font-size: small;
+        margin-right: 4%;
+        margin-top: 2%;
+    }
+
+    .container-fluid{
+        margin-top: 20%;
+    }
 }

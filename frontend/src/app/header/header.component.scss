@@ -61,12 +61,6 @@ a:focus{
     height: auto;
   }
 
-.buscar{
-    background-color: #04549c;
-    border-color: #e7e1e18f;
-}
-
-
 .loading{
     display: flex;
     justify-content: center;
@@ -76,4 +70,20 @@ a:focus{
     width: 100%;
     max-width: 330px;
     text-align: center;
+}
+
+@media screen and (max-width: 412px){
+    .navbar-logo img{
+        width: 170px;
+        height: 100px;
+      }
+
+    .navbar-nav{
+        font-size: 16px;
+        font-family: 'Times New Roman';
+    }
+
+    .cerrar{
+        text-align: center;
+    }
 }

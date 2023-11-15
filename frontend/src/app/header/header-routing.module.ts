@@ -36,6 +36,14 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
+          import('./modules/admin/admin.module').then(
+            (m) => m.AdminModule
+          ),
+          canActivate: [permisosGuard],
+      },
+      {
+        path: '',
+        loadChildren: () =>
           import('./modules/login/login.module').then((m) => m.LoginModule),
       },
     ],

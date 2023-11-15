@@ -13,3 +13,25 @@ label{
     font-weight: bold;
     color: rgb(100, 93, 93);
 }
+
+@media screen and (max-width: 412px){
+    .agregar{
+        margin-top: 20%;
+    }
+
+    label{
+        font-size: 12px;
+    }
+
+    input{
+        font-size: 12px;
+    }
+
+    .btn{
+        font-size: small;
+    }
+
+    mat-icon{
+        font-size: 20px;
+    }
+}
