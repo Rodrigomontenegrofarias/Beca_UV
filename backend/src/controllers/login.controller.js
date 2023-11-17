@@ -70,15 +70,3 @@ export const borrarUsuario = async (req, res) => {
    .input('id', id)
    .query('DELETE FROM users WHERE userID = (CAST(@id AS VARCHAR))');
 };
-
-export const editarUsuario = async (req, res) => {
-   let { usuario, casino } = req.body;
-   const {id} = req.params;
-
-   const pool = await getConnection();
-   await pool.request()
-   .input("usuario", sql.VarChar, usuario)
-   .input("casino", sql.VarChar, casino)
-   .input("id", sql.Int, id)
-   .query('UPDATE alumnos SET usuario = @usuario, casino = @casino WHERE userID = @id');
-}

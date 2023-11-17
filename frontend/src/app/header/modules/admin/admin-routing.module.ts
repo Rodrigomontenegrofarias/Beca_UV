@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AgregarUsuariosComponent } from './agregar-usuarios/agregar-usuarios.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,9 @@ const routes: Routes = [
     children: [
       { 
         path: 'admin', component: UsuariosComponent
+      },
+      {
+        path: 'agregar-usuario', component: AgregarUsuariosComponent
       }
     ]
   }

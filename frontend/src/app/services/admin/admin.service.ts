@@ -14,6 +14,7 @@ export class AdminService {
   selectUser: User = {
     id: '',
     usuario: '',
+    casino: '',
     password: '',
     role: ''
   };
@@ -25,10 +26,6 @@ export class AdminService {
 
   addUser(user: User) {
     return this.http.post(this.url_api, user);
-  }
-
-  updateUser(user: User) {
-    return this.http.put(`${this.url_api}/${user.id}`, user);
   }
 
   deleteUser(id: string) {

@@ -33,6 +33,5 @@ router.get('/admin', verUsuarios);
 router.get('/admin/:id', verUsuarioId);
 router.post('/admin', agregarUsuario);
 router.delete('/admin/:id', borrarUsuario);
-router.put('/admin/:id', editarUsuario);
 
 export default router;

@@ -33,10 +33,6 @@ export class UsuariosComponent implements OnInit {
     )
   }
 
-  editarUsuario(user: User) {
-    this.adminService.selectUser = user;
-  }
-
   borrarUsuario(id: string) {
     if (confirm('¿Desea eliminar este usuario?')){
       this.adminService.deleteUser(id).subscribe(

@@ -1,0 +1,62 @@
+<div class="col-md-4 agregar">
+    <div class="card">
+        <div class="card-body">
+            <form class="row" #alumnoForm="ngForm" (ngSubmit)="agregarUsuario(alumnoForm)">
+
+              <input type="hidden" name="id" [(ngModel)]="adminService.selectUser.id">
+
+                <div class="mb-3">
+                  <label for="validation1" class="form-label">Usuario</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="usuario" 
+                    id="validation1" 
+                    placeholder="Nombre de Usuario"
+                    [(ngModel)]="adminService.selectUser.usuario"
+                  required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="validation2" class="form-label">Casino</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="casino" 
+                    id="validation2" 
+                    placeholder="Nombre del casino" 
+                    [(ngModel)]="adminService.selectUser.casino"
+                  required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="validation3" class="form-label">Contraseña</label>
+                  <input 
+                    type="password" 
+                    class="form-control" 
+                    name="password" 
+                    id="validation3" 
+                    placeholder="Nueva contraseña" 
+                    [(ngModel)]="adminService.selectUser.password"
+                  required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="validation4" class="form-label">Rol de Usuario</label>
+                  <br>
+                  <select name="validation4">
+                    <option>usuario</option>
+                    <option>administrador</option>
+                  </select>
+                </div>
+
+                <div class="col-12" style="text-align: center;">
+                    <button class="btn btn-primary" type="submit">
+                    Agregar usuario
+                    <mat-icon style="vertical-align: middle;">save_alt</mat-icon>
+                    </button>
+                </div>                      
+            </form>
+        </div>
+    </div>
+</div>
