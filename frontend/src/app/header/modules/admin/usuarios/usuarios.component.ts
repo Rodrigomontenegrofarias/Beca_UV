@@ -3,7 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/models/user';
 import { AdminService } from 'src/app/services/admin/admin.service';
-import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -17,7 +16,6 @@ export class UsuariosComponent implements OnInit {
   constructor(
     public adminService: AdminService,
     private snackBar: MatSnackBar,
-    public loginService: LoginService
   ) { }
 
   ngOnInit(): void {

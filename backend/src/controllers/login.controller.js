@@ -33,7 +33,7 @@ export const loginUsuario = async (req, res) => {
  //peticiones admin
  export const verUsuarios = async (req, res) => {
    const pool = await getConnection();
-   const result = await pool.request().query('SELECT usuario, casino FROM users');
+   const result = await pool.request().query('SELECT userID, usuario, casino FROM users');
 
    res.json(result.recordset);
 };
@@ -44,7 +44,7 @@ export const verUsuarioId = async (req, res) => {
    const pool = await getConnection();
    const result = await pool.request()
    .input('id', id)
-   .query('SELECT usuario,casino FROM alumnos WHERE userID = @id')
+   .query('SELECT userID, usuario, casino FROM alumnos WHERE userID = @id')
 
    res.send(result.recordset[0]);
 };

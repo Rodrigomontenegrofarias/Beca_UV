@@ -3,7 +3,7 @@
         <div class="card-body">
             <form class="row" #alumnoForm="ngForm" (ngSubmit)="agregarUsuario(alumnoForm)">
 
-              <input type="hidden" name="id" [(ngModel)]="adminService.selectUser.id">
+              <input type="hidden" name="id" [(ngModel)]="adminService.selectUser.userID">
 
                 <div class="mb-3">
                   <label for="validation1" class="form-label">Usuario</label>

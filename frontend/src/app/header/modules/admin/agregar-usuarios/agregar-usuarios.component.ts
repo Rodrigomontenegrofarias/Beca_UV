@@ -27,14 +27,6 @@ export class AgregarUsuariosComponent implements OnInit {
       form.reset();
       this.msgAdd();
   }
-
-  msgEdit(){
-    this._snackBar.open('Usuario editado correctamente', '', {
-      duration: 4000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
-  }
   
   msgAdd(){
     this._snackBar.open('Usuario agregado correctamente', '', {
