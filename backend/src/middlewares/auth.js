@@ -33,7 +33,7 @@ export const checkToken = (req, res, next) => {
     next();
 }
 
-export const checkKey = (req, res, next) => {
+export const checkUser = (req, res, next) => {
     if (!req.headers['authorization']){
         return res.json({error: 'cabecera inválida'});
     }

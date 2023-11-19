@@ -1,7 +1,7 @@
 <div class="col-md-4 agregar">
     <div class="card">
         <div class="card-body">
-            <form class="row" #alumnoForm="ngForm" (ngSubmit)="agregarUsuario(alumnoForm)">
+            <form class="row" #adminForm="ngForm" (ngSubmit)="agregarUsuario(adminForm)">
 
               <input type="hidden" name="id" [(ngModel)]="adminService.selectUser.userID">
 
@@ -42,12 +42,25 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="validation4" class="form-label">Rol de Usuario</label>
+                  <label>Rol de Usuario</label>
                   <br>
-                  <select name="validation4">
-                    <option>usuario</option>
-                    <option>administrador</option>
-                  </select>
+                  <input 
+                    type="radio"
+                    name="rol"
+                    id="validation4"
+                    value="user"
+                    checked
+                    [(ngModel)]="adminService.selectUser.role"
+                    >
+                    <label for="validation4" class="form-label" style="font-weight: lighter; color: black; margin-left: 1%;">Usuario</label>
+
+                  <!-- <input style="margin-left: 4%;"
+                    type="radio" 
+                    name="rol"
+                    id="validation4"
+                    value="admin"
+                    >
+                    <label for="validation4" style="font-weight: lighter; color: black; margin-left: 1%;">Administrador</label> -->
                 </div>
 
                 <div class="col-12" style="text-align: center;">

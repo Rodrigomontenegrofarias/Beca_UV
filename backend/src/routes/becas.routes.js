@@ -4,7 +4,7 @@ import {agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos} from
 import {canjeAlumno, verCanjeRut} from '../controllers/canjes.controller'
 import {loginUsuario, agregarUsuario, verUsuarios, borrarUsuario, verUsuarioId, editarUsuario} from '../controllers/login.controller'
 
-const { checkToken, checkKey } = require('../middlewares/auth')
+const { checkToken, checkUser } = require('../middlewares/auth')
 
 const router = Router()
 

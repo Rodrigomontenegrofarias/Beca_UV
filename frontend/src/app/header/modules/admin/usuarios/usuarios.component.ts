@@ -39,8 +39,8 @@ export class UsuariosComponent implements OnInit {
         },
         (err) => console.error(err) 
         );
-      this.msgDelete();
-      this.verUsuarios();
+        this.msgDelete();
+        this.verUsuarios();
     }
   }
 
