@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 import { LoginService } from 'src/app/services/login/login.service';
+import { ExportService } from 'src/app/services/export/export.service';
 
 @Component({
   selector: 'app-alumno',
@@ -24,7 +25,8 @@ export class AlumnoComponent implements OnInit {
   constructor(
     public alumnoService: AlumnoService,
     private snackBar: MatSnackBar,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private exportService: ExportService
   ) { }
 
   ngOnInit(): void {
@@ -69,4 +71,9 @@ export class AlumnoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  exportAsExcel():void{
+    this.exportService.exportToExcel(this.dataSource.data, 'Canje-Alumnos');
+  }
+
 }
