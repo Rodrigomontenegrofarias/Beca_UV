@@ -19,7 +19,7 @@ export const permisosAdmin = () => {
   if (localStorage.getItem('role') === 'Administrador') {
     return true;
   } else {
-    router.navigate(['/alumnos'])
+    router.navigate(['/'])
     return false;
   }
 }

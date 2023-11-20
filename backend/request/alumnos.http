@@ -30,8 +30,8 @@ PUT {{api}}/2
 Content-Type: application/json
 
 {
-    "nombre": "Katherine Valencia",
-    "rut": "19061066-7",
+    "nombre": "pedro",
+    "rut": "3988675-3",
     "cantidad": 25,
     "fecha": "2022-03-04"
 }
@@ -53,6 +53,7 @@ DELETE {{api2}}/7
 
 ###
 GET {{api3}}/17760740-1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluaXN0cmFkb3IgICIsImlhdCI6MTcwMDUwMDkwNywiZXhwIjoxNzAwNTA0NTA3fQ.2EykRLALcMj5NUikJM-hUINl7DxgRmYn0U5M_fjK_UE
 
 ###
 PATCH {{api3}}/17760740-1

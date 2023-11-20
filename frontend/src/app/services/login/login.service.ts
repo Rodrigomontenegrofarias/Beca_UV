@@ -22,7 +22,7 @@ export class LoginService {
 
   //Oculta elementos y botones si no es Administrador
   rolesAccess(): boolean{
-    let role = localStorage.getItem('role')?.trim();
+    let role = localStorage.getItem('role');
     if (role === 'Administrador') {
       return true;
     } else {

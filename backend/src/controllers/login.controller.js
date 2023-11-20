@@ -21,7 +21,7 @@ export const loginUsuario = async (req, res) => {
        tokenPromise.then((value) => {
          res.json({
             token: value,
-            role: user.recordset[0].role
+            role: user.recordset[0].role.trim()
          });
        });
     } else {
