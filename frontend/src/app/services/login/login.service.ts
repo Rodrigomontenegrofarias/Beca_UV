@@ -15,10 +15,12 @@ export class LoginService {
     return this.http.post(this.url_api, user);
   }
 
+  //Oculta elementos del menú si no está logueado
   isLogged(): boolean{
     return localStorage.getItem('token_login') ? true : false;
   }
 
+  //Oculta elementos y botones si no es Administrador
   rolesAccess(): boolean{
     let role = localStorage.getItem('role')?.trim();
     if (role === 'Administrador') {
