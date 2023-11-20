@@ -16,7 +16,7 @@ export const createToken = async (user) => {
     );
 }
 
-export const checkToken = (req, res, next) => {
+/* export const checkToken = (req, res, next) => {
     if (!req.headers['authorization']){
         return res.json({error: 'cabecera inválida'});
     }
@@ -31,4 +31,4 @@ export const checkToken = (req, res, next) => {
     }
 
     next();
-}
+} */

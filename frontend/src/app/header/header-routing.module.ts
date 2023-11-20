@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HeaderComponent } from './header.component';
-import { permisosGuard } from '../guards/permisos.guard';
+import { permisosGuard, permisosAdmin } from '../guards/permisos.guard';
 
 const routes: Routes = [
   {
@@ -32,6 +32,14 @@ const routes: Routes = [
             (m) => m.DocumentosModule
           ),
           canActivate: [permisosGuard],
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./modules/admin/admin.module').then(
+            (m) => m.AdminModule
+          ),
+          canActivate: [permisosGuard, permisosAdmin],
       },
       {
         path: '',

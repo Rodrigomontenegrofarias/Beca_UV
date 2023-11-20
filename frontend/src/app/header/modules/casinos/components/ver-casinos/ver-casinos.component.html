@@ -16,7 +16,9 @@
                         <td>{{ casino.cantidad }}</td>
                         <td>
                             <button *ngIf="loginService.rolesAccess()" matTooltip="Eliminar casino" class="btn btn-danger btn-sm delete" (click)="borrarCasino(casino.id!)">
-                                <mat-icon>delete</mat-icon>
+                                <div class="icono">
+                                  <mat-icon class="icono">delete</mat-icon>
+                                </div>
                             </button>
                         </td>
                     </tr>

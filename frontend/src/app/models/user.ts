@@ -1,8 +1,9 @@
 export interface User{
+    userID?: string
     usuario: string,
     password: string,
     role?: string,
-    id?: string
+    casino?: string
 }
 
 /* export interface Login{

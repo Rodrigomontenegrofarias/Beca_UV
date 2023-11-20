@@ -2,18 +2,16 @@ import {Router} from 'express'
 import {agregarAlumno, borrarAlumno, editarAlumno, verAlumnoId, verAlumnos} from '../controllers/alumnos.controller'
 import {agregarCasino, borrarCasino, editarCasino, verCasinoId, verCasinos} from '../controllers/casinos.controller'
 import {canjeAlumno, verCanjeRut} from '../controllers/canjes.controller'
-import {loginUsuario, agregarUsuario} from '../controllers/login.controller'
-
-const { checkApiKey, checkToken } = require('../middlewares/auth')
+import {loginUsuario, agregarUsuario, verUsuarios, borrarUsuario, verUsuarioId} from '../controllers/login.controller'
 
 const router = Router()
 
 //endpoint alumnos
-router.get('/alumnos', checkToken, verAlumnos);
-router.get('/alumnos/:id', checkToken, verAlumnoId);
-router.post('/alumnos', checkToken, agregarAlumno);
-router.delete('/alumnos/:id',checkToken, borrarAlumno);
-router.put('/alumnos/:id', checkToken, editarAlumno);
+router.get('/alumnos', verAlumnos);
+router.get('/alumnos/:id', verAlumnoId);
+router.post('/alumnos', agregarAlumno);
+router.delete('/alumnos/:id', borrarAlumno);
+router.put('/alumnos/:id', editarAlumno);
 
 //endpoint casinos
 router.get('/casinos', verCasinos);
@@ -28,6 +26,10 @@ router.patch('/canjes/:rut', canjeAlumno);
 
 //endpoint login
 router.post('/login', loginUsuario);
-router.post('/register', agregarUsuario);
+//endpoint admin
+router.get('/admin', verUsuarios);
+router.get('/admin/:id', verUsuarioId);
+router.post('/admin', agregarUsuario);
+router.delete('/admin/:id', borrarUsuario);
 
-export default router
+export default router;

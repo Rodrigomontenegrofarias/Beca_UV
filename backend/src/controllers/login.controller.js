@@ -21,7 +21,7 @@ export const loginUsuario = async (req, res) => {
        tokenPromise.then((value) => {
          res.json({
             token: value,
-            role: user.recordset[0].role
+            role: user.recordset[0].role.trim()
          });
        });
     } else {
@@ -29,14 +29,44 @@ export const loginUsuario = async (req, res) => {
     }
  };
  
- export const agregarUsuario = async (req, res) =>{
-    let { usuario, password, role} = req.body;
-    password = await hashPassword(password);
- 
-    const pool = await getConnection();
-    await pool.request()
-    .input("usuario", sql.VarChar, usuario)
-    .input("password", sql.VarChar, password)
-    .input("role", sql.VarChar, role)
-    .query('INSERT INTO users (usuario, password, role) VALUES (@usuario, @password, @role)');
- };
+
+ //peticiones admin
+ export const verUsuarios = async (req, res) => {
+   const pool = await getConnection();
+   const result = await pool.request().query('SELECT userID, usuario, role, casino FROM users WHERE userID != 1');
+
+   res.json(result.recordset);
+};
+
+export const verUsuarioId = async (req, res) => {
+   const {id} = req.params;
+
+   const pool = await getConnection();
+   const result = await pool.request()
+   .input('id', id)
+   .query('SELECT userID, usuario, casino FROM alumnos WHERE userID = @id')
+
+   res.send(result.recordset[0]);
+};
+
+export const agregarUsuario = async (req, res) =>{
+   let { usuario, password, role, casino} = req.body;
+   password = await hashPassword(password);
+
+   const pool = await getConnection();
+   await pool.request()
+   .input("usuario", sql.VarChar, usuario)
+   .input("password", sql.VarChar, password)
+   .input("role", sql.VarChar, role)
+   .input("casino", sql.VarChar, casino)
+   .query('INSERT INTO users (usuario, password, role, casino) VALUES (@usuario, @password, @role, @casino)');
+};
+
+export const borrarUsuario = async (req, res) => {
+   const {id} = req.params;
+
+   const pool = await getConnection();
+   await pool.request()
+   .input('id', id)
+   .query('DELETE FROM users WHERE userID = (CAST(@id AS VARCHAR))');
+};

@@ -19,11 +19,16 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/documentos">Documentos</a>
           </li>
+          <li *ngIf="loginService.rolesAccess()" class="nav-item">
+            <a class="nav-link" routerLink="/admin">Usuarios</a>
+          </li>
         </ul>
+        <div class="cerrar">
           <button *ngIf="loginService.isLogged()" class="btn btn-primary" type="submit" (click)="isLoading()">
             Cerrar sesión
             <mat-icon style="vertical-align: middle;">logout</mat-icon>
           </button>
+        </div>
         </div>
       </div>
   </nav>
