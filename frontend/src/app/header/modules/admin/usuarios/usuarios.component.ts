@@ -10,7 +10,7 @@ import { AdminService } from 'src/app/services/admin/admin.service';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns: string[] = ['usuario', 'casino', 'acciones'];
+  displayedColumns: string[] = ['usuario', 'casino', 'rol', 'acciones'];
   dataSource = new MatTableDataSource<User>;
 
   constructor(

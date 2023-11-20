@@ -33,7 +33,7 @@ export const loginUsuario = async (req, res) => {
  //peticiones admin
  export const verUsuarios = async (req, res) => {
    const pool = await getConnection();
-   const result = await pool.request().query('SELECT userID, usuario, casino FROM users');
+   const result = await pool.request().query('SELECT userID, usuario, role, casino FROM users WHERE userID != 1');
 
    res.json(result.recordset);
 };
