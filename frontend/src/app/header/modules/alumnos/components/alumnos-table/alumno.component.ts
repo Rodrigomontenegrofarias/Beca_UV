@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 import { LoginService } from 'src/app/services/login/login.service';
-import { ExportService } from 'src/app/services/export/export.service';
+
 
 @Component({
   selector: 'app-alumno',
@@ -13,6 +13,7 @@ import { ExportService } from 'src/app/services/export/export.service';
   styleUrls: ['./alumno.component.scss']
 })
 export class AlumnoComponent implements OnInit {
+
   displayedColumns: string[] = ['nombre', 'rut', 'cantidad', 'fecha', 'acciones'];
   dataSource = new MatTableDataSource<Alumno>;
 
@@ -25,8 +26,7 @@ export class AlumnoComponent implements OnInit {
   constructor(
     public alumnoService: AlumnoService,
     private snackBar: MatSnackBar,
-    public loginService: LoginService,
-    private exportService: ExportService
+    public loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class AlumnoComponent implements OnInit {
     }
   }
 
-  msgDelete(){
+  public msgDelete(){
     this.snackBar.open('El alumno se ha eliminado correctamente', '', {
       duration: 3000,
       horizontalPosition: 'center',
@@ -70,10 +70,6 @@ export class AlumnoComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  exportAsExcel():void{
-    this.exportService.exportToExcel(this.dataSource.data, 'Canje-Alumnos');
   }
 
 }
