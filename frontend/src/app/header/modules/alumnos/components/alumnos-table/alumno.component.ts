@@ -6,12 +6,14 @@ import { Alumno } from 'src/app/models/alumno';
 import {AlumnoService} from '../../../../../services/alumnos/alumno.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
+
 @Component({
   selector: 'app-alumno',
   templateUrl: './alumno.component.html',
   styleUrls: ['./alumno.component.scss']
 })
 export class AlumnoComponent implements OnInit {
+
   displayedColumns: string[] = ['nombre', 'rut', 'cantidad', 'fecha', 'acciones'];
   dataSource = new MatTableDataSource<Alumno>;
 
@@ -57,7 +59,7 @@ export class AlumnoComponent implements OnInit {
     }
   }
 
-  msgDelete(){
+  public msgDelete(){
     this.snackBar.open('El alumno se ha eliminado correctamente', '', {
       duration: 3000,
       horizontalPosition: 'center',
@@ -69,4 +71,5 @@ export class AlumnoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 }
