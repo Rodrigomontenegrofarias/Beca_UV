@@ -20,32 +20,24 @@ export class VerDocumentosComponent implements OnInit {
   }
 
   exportAsExcelAlumnos():void{
-    let respuesta: any = {
-      nombre: '',
-      rut: '',
-      cantidad: '',
-      fecha: '',
-    };
+    let respuesta: any;
 
     this.alumnoService.getAlumnos().subscribe(
       res => {
         respuesta = res;
-        this.exportService.exportToExcel(respuesta, 'Canje-Alumnos');
+        this.exportService.exportToExcel(respuesta, 'Canje-Alumnos', 1);
       },
       err => console.log(err)
     )
   }
   
   exportAsExcelCasinos():void{
-    let respuesta: any = {
-      nombre: '',
-      cantidad: '',
-    };
+    let respuesta: any;
 
     this.casinoService.getCasinos().subscribe(
       res => {
         respuesta = res;
-        this.exportService.exportToExcel(respuesta, 'Canje-Casinos');
+        this.exportService.exportToExcel(respuesta, 'Canje-Casinos', 2);
       },
       err => console.log(err)
     )
