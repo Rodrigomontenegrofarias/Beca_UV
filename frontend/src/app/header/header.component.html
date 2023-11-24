@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md" style="background-color: #04549c;">
     <div class="container">
       <a class="navbar-logo" href="/">
-        <img src="assets/img/uv.png" >
+        <img src="assets/img/uv.png" style="align-items: center;">
       </a>
     
       <button *ngIf="loginService.isLogged()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,3 +37,7 @@
   </div>
   
   <router-outlet *ngIf="!loading"></router-outlet>
+
+  <footer *ngIf="loginService.isLogged()">
+    <p>&copy; 2023 Universidad de Valparaíso</p>
+  </footer>
