@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class AlumnoComponent implements OnInit {
 
-  displayedColumns: string[] = ['nombre', 'rut', 'cantidad', 'fecha', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'rut', 'cantidad', 'canje', 'acciones'];
   dataSource = new MatTableDataSource<Alumno>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
