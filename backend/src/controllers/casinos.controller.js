@@ -20,13 +20,14 @@ export const verCasinos = async (req, res) => {
  };
  
  export const agregarCasino = async (req, res) =>{
-    let { nombre, cantidad} = req.body;
+    let { nombre} = req.body;
+    const cantidad = 0;
  
     const pool = await getConnection();
     await pool.request()
     .input("nombre", sql.VarChar, nombre)
     .input("cantidad", sql.Int, cantidad)
-    .query('INSERT INTO casinos (nombre, cantidad) VALUES (@nombre, 0)');
+    .query('INSERT INTO casinos (nombre, cantidad) VALUES (@nombre, @cantidad)');
  };
  
  export const borrarCasino = async (req, res) => {

@@ -41,18 +41,6 @@
                   required>
                 </div>
 
-                <div class="mb-3">
-                  <label for="validation4" class="form-label">Fecha</label>
-                  <input 
-                    type="date" 
-                    class="form-control" 
-                    name="fecha" 
-                    id="validation4" 
-                    placeholder="Ej: 03/04/2022" 
-                    [(ngModel)]="alumnoService.selectAlumno.fecha"
-                  required>
-                </div>
-
                 <div [ngSwitch]="getCurrentUrl()">
                   <div *ngSwitchCase="1">                    
                     <div class="col-12" style="text-align: center;">
