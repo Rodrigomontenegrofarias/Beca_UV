@@ -22,13 +22,8 @@ export const verAlumnoId = async (req, res) => {
 export const agregarAlumno = async (req, res) =>{
    let { nombre, rut, cantidad} = req.body;
    const canje = 0;
-   const fechaActual = new Date();
 
-   const dia = fechaActual.getDate() - 1; // Para que se pueda efectuar un canje de la beca desde hoy mismo
-   const mes = fechaActual.getMonth() + 1; // Los meses comienzan desde 0, así que se suma 1
-   const anio = fechaActual.getFullYear();
-
-   const fecha = dia+'-'+mes+'-'+anio;
+   const fecha = 'Sin canje aún';
 
    const pool = await getConnection();
    await pool.request()

@@ -18,14 +18,16 @@ export const verCanjeRut = async (req, res) => {
 
     const fechaCanje = dia+'-'+mes+'-'+anio;
  
-    if ((respuesta === 1) && (fechaCanje != result.recordset[0].fecha.trim())) {
-       res.send(result.recordset[0]);
+    if (respuesta === 1) {
+      if ( fechaCanje != result.recordset[0].fecha.trim() ) {
+         res.send(result.recordset[0]);
+      }
+      else{
+         res.sendStatus(201);
+      }
     }
-    else if (respuesta < 1) {
+    else {
        res.sendStatus(404);
-    }
-    else{
-      res.sendStatus(201);
     }
  };
  
