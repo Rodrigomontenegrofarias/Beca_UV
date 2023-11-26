@@ -33,6 +33,7 @@ export const verCanjeRut = async (req, res) => {
  
  export const canjeAlumno = async (req, res) => {
     const {rut} = req.params;
+    const {idCasino} = req.params;
 
     const fechaActual = new Date();
 
@@ -48,12 +49,13 @@ export const verCanjeRut = async (req, res) => {
     .input("fechaCanje", sql.VarChar, fechaCanje)
     .query('UPDATE alumnos SET cantidad = (cantidad - 1), canje = (canje + 1), fecha = @fechaCanje WHERE rut = @rut')
     res.sendStatus(201)
-    canje();
+    canje(idCasino);
  }
  
- const canje = async () => {
+ const canje = async (idCasino) => {
  
     const pool = await getConnection();
     await pool.request()
-    .query('UPDATE casinos SET cantidad = (cantidad + 1) WHERE id = 1')
+    .input("idCasino", idCasino)
+    .query('UPDATE casinos SET cantidad = (cantidad + 1) WHERE id = @idCasino')
  }

@@ -21,8 +21,8 @@ router.delete('/casinos/:id', borrarCasino);
 router.put('/casinos/:id', editarCasino);
 
 //endpoint canjes en la raspberry
-router.get('/canjes/:rut', verCanjeRut);
-router.patch('/canjes/:rut', canjeAlumno);
+router.get('/canjes/:rut/:idCasino', verCanjeRut);
+router.patch('/canjes/:rut/:idCasino', canjeAlumno);
 
 //endpoint login
 router.post('/login', loginUsuario);
