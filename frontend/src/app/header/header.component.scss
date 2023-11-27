@@ -77,12 +77,17 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    position: fixed;
     bottom: 0;
     width: 100%;
   }
 
-@media screen and (max-width: 412px){
+@media screen and (max-width: 1080px){
+    footer{
+        position: fixed;
+    }
+}
+
+@media screen and (max-width: 428px){
     .navbar-logo img{
         width: 170px;
         height: 100px;
@@ -96,4 +101,36 @@ footer {
     .cerrar{
         text-align: center;
     }
+
+    footer{
+        position: fixed;
+        height: 80px;
+    }
+
+    .p{
+        margin-top: auto;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .navbar-logo img{
+        width: 170px;
+        height: 100px;
+      }
+
+    .navbar-nav{
+        font-size: 16px;
+        font-family: 'Times New Roman';
+    }
+
+    .cerrar{
+        text-align: center;
+    }
+
+    footer{
+        position: fixed;
+        height: 50px;
+    }
+
 }

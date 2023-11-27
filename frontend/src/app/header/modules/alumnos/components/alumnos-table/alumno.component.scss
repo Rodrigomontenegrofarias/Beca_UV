@@ -1,3 +1,7 @@
+.container-fluid{
+    margin-bottom: 30px;
+}
+
 table{
     width: 100%;
 }
@@ -41,7 +45,13 @@ th.mat-header-cell, td.mat-cell {
     font-size: 14px;
   }
 
-@media screen and (max-width: 412px){
+  @media screen and (max-width: 1080px){
+    .container-fluid{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 428px){
     .edit{
         width:30px;
         height:30px;
@@ -69,5 +79,36 @@ th.mat-header-cell, td.mat-cell {
 
     .container-fluid{
         margin-top: 20%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .edit{
+        width:25px;
+        height:25px;
+    }
+    .delete{
+        width:25px;
+        height:25px;
+    }
+    .icono{
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    th.mat-header-cell, td.mat-cell {
+        text-align: center !important;
+        font-size: 9px;
+      }
+
+    .agregar{
+        font-size: small;
+        margin-right: 4%;
+        margin-top: 2%;
+    }
+
+    .container-fluid{
+        margin-top: 10%;
     }
 }

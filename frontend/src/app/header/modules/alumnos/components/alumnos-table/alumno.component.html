@@ -64,12 +64,12 @@
             </table>
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" aria-label="Seleccione número de elementos"></mat-paginator> 
           </div>
-        </div>
-        <div class="col-12" style="text-align: right;">
-          <button *ngIf="loginService.rolesAccess()" class="btn btn-primary agregar" [routerLink]="['/agregar-alumno']">
-            Agregar nuevo alumno
-            <mat-icon style="vertical-align: middle;">add</mat-icon>
-          </button>
+          <div class="col-12" style="text-align: right;">
+            <button *ngIf="loginService.rolesAccess()" class="btn btn-primary agregar" [routerLink]="['/agregar-alumno']">
+              Agregar nuevo alumno
+              <mat-icon style="vertical-align: middle;">add</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
