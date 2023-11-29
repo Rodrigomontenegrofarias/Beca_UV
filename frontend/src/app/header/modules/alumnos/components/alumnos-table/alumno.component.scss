@@ -1,5 +1,8 @@
 .container-fluid{
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 table{
@@ -45,7 +48,7 @@ th.mat-header-cell, td.mat-cell {
     font-size: 14px;
   }
 
-  @media screen and (max-width: 1080px){
+@media screen and (max-width: 1080px){
     .container-fluid{
         margin-top: 10%;
     }
