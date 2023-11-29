@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Casino } from 'src/app/models/casino';
 import { CasinoService } from '../../../../../services/casinos/casinos.service';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -10,8 +12,12 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class VerCasinosComponent implements OnInit {
 
+  displayedColumns: string[] = ['nombre', 'cantidad', 'acciones'];
+  dataSource = new MatTableDataSource<Casino>;
+
   constructor(
     public casinoService: CasinoService,
+    private snackBar: MatSnackBar,
     public loginService: LoginService
     ) { }
 
@@ -22,7 +28,7 @@ export class VerCasinosComponent implements OnInit {
   verCasinos() {
     this.casinoService.getCasinos().subscribe(
         res => {
-          this.casinoService.casinos = res;
+          this.dataSource.data = res;
         },
         err => console.log(err)
     )
@@ -36,9 +42,17 @@ export class VerCasinosComponent implements OnInit {
         },
         (err) => console.error(err) 
       );
-      alert('El casino se ha eliminado correctamente');
+      this.msgDelete();
       this.verCasinos();
     }
+  }
+
+  public msgDelete(){
+    this.snackBar.open('El Casino se ha eliminado correctamente', '', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
   }
 
 }

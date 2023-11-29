@@ -22,8 +22,8 @@ table{
 
 .agregar{
     font-size: large;
-    margin-right: 4%;
-    margin-top: 2%;
+    margin-right: 3%;
+    margin-top: 1%;
     color: white;
     border-color: #1312126c;
     background-color: #04549c;
@@ -52,6 +52,11 @@ th.mat-header-cell, td.mat-cell {
     .container-fluid{
         margin-top: 10%;
     }
+
+    .agregar{
+        margin-right: 1%;
+        margin-top: 1%;
+    }
 }
 
 @media screen and (max-width: 428px){
@@ -76,7 +81,7 @@ th.mat-header-cell, td.mat-cell {
 
     .agregar{
         font-size: small;
-        margin-right: 4%;
+        margin-right: 2%;
         margin-top: 2%;
     }
 
@@ -107,7 +112,7 @@ th.mat-header-cell, td.mat-cell {
 
     .agregar{
         font-size: small;
-        margin-right: 4%;
+        margin-right: 2%;
         margin-top: 2%;
     }
 

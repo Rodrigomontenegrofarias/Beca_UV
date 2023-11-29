@@ -1,3 +1,9 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: 73vh;
+}
+
 .mat-list-item {
     color: rgba(0, 0, 0, 0.616);
 }
