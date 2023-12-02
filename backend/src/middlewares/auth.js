@@ -32,3 +32,23 @@ export const checkToken = (req, res, next) => {
 
     next();
 }
+
+export const checkUser = (req, res, next) => {
+    if (!req.headers['authorization']){
+        return res.json({error: 'cabecera inválida'});
+    }
+
+    const token = req.headers['authorization'];
+
+    let payload;
+    try {
+        payload = jwt.verify(token, config.apikey);
+        if (payload.role.trim() != 'Administrador') {
+            return res.json({error: 'token inválido'})
+        }
+    } catch (error) {
+        return res.json({error: 'token inválido'})
+    }
+
+    next();
+}
