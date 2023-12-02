@@ -15,14 +15,14 @@ export class ExportService {
     // Configuración de columnas
     if (canje === 1) {
       worksheet.columns = [
-        { header: 'Nombre', key: 'nombre', width: 18 },
-        { header: 'Rut', key: 'rut', width: 18 },
-        { header: 'Cantidad', key: 'cantidad', width: 12 },
+        { header: 'Nombre', key: 'nombre', width: 60 },
+        { header: 'Rut', key: 'rut', width: 30 },
+        { header: 'Cantidad', key: 'cantidad', width: 30 },
       ];
     } else {
       worksheet.columns = [
-        { header: 'Nombre', key: 'nombre', width: 52 },
-        { header: 'Cantidad', key: 'cantidad', width: 12 },
+        { header: 'Nombre', key: 'nombre', width: 60 },
+        { header: 'Cantidad', key: 'cantidad', width: 30 },
       ];
     }
     

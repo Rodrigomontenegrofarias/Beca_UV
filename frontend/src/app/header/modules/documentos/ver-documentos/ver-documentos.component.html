@@ -4,8 +4,7 @@
       <div mat-subheader style="font-weight: bold;">CANJES DE ALUMNOS</div>
           <mat-list-item>
             <mat-icon matListItemIcon>folder</mat-icon>
-            <div matListItemTitle>Excel</div>
-            <div matListItemLine> 11-03-2023</div>
+            <div matListItemTitle>Excel {{fecha}}</div>
             <div style="text-align: center; margin-left: 10%;">
               <button class="btn btn-primary" type="button" (click)="exportAsExcelAlumnos()">
                 Descargar
@@ -19,8 +18,7 @@
       <div mat-subheader style="font-weight: bold;">CANJES POR CASINOS</div>
           <mat-list-item>
             <mat-icon matListItemIcon>folder</mat-icon>
-            <div matListItemTitle>Excel</div>
-            <div matListItemLine>05-07-2023</div>
+            <div matListItemTitle>Excel {{fecha}}</div>
             <div style="text-align: center; margin-left: 10%;">
               <button class="btn btn-primary" type="button" (click)="exportAsExcelCasinos()">
                 Descargar

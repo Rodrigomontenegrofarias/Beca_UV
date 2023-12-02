@@ -19,13 +19,21 @@ export class VerDocumentosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  fechaActual = new Date();
+
+  dia = this.fechaActual.getDate();
+  mes = this.fechaActual.getMonth() + 1; // Los meses comienzan desde 0, así que se suma 1
+  anio = this.fechaActual.getFullYear();
+
+  fecha = this.dia+'-'+this.mes+'-'+this.anio;
+
   exportAsExcelAlumnos():void{
     let respuesta: any;
 
     this.alumnoService.getAlumnos().subscribe(
       res => {
         respuesta = res;
-        this.exportService.exportToExcel(respuesta, 'Canje-Alumnos', 1);
+        this.exportService.exportToExcel(respuesta, 'Canje-Alumnos ('+this.fecha+')', 1);
       },
       err => console.log(err)
     )
@@ -37,7 +45,7 @@ export class VerDocumentosComponent implements OnInit {
     this.casinoService.getCasinos().subscribe(
       res => {
         respuesta = res;
-        this.exportService.exportToExcel(respuesta, 'Canje-Casinos', 2);
+        this.exportService.exportToExcel(respuesta, 'Canje-Casinos ('+this.fecha+')', 2);
       },
       err => console.log(err)
     )
