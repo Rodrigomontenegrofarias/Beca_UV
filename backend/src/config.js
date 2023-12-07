@@ -7,5 +7,6 @@ export default {
     user: process.env.USER,
     password: process.env.PASSWORD,
     server: process.env.SERVER,
-    database: process.env.DATABASE
+    database: process.env.DATABASE,
+    frontend: process.env.FRONTEND
 }

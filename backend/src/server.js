@@ -8,7 +8,7 @@ const server = express()
 
 server.set('port', config.port)
 
-server.use(cors({origin: "http://localhost:4200"}))
+server.use(cors({origin: config.frontend}))
 
 //middlewares
 server.use(express.json());
