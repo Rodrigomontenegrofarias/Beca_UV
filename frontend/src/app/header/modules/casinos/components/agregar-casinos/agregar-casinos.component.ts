@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CasinoService } from '../../../../../services/casinos/casinos.service'
 
 @Component({
@@ -12,7 +13,8 @@ export class AgregarCasinosComponent implements OnInit {
 
   constructor(
     public casinoService: CasinoService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +28,15 @@ export class AgregarCasinosComponent implements OnInit {
       );
       form.reset();
       this.router.navigate(['/casinos']);
-      alert('Casino agregado correctamente');
+      this.msgAdd();
+  }
+
+  msgAdd(){
+    this._snackBar.open('Casino agregado correctamente', '', {
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
   }
 
 }

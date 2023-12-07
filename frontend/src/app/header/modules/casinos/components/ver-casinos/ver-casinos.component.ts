@@ -51,7 +51,7 @@ export class VerCasinosComponent implements OnInit {
     this.snackBar.open('El Casino se ha eliminado correctamente', '', {
       duration: 3000,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom'
+      verticalPosition: 'top'
     });
   }
 

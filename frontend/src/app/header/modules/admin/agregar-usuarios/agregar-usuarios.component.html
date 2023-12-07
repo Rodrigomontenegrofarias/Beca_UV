@@ -50,6 +50,7 @@
                     id="validation4"
                     value="Usuario"
                     [(ngModel)]="adminService.selectUser.role"
+                    checked
                     >
                     <label for="validation4" class="form-label" style="font-weight: lighter; color: black; margin-left: 1%;">Usuario</label>
 
@@ -60,11 +61,11 @@
                     value="Administrador"
                     [(ngModel)]="adminService.selectUser.role"
                     >
-                    <label for="validation4" style="font-weight: lighter; color: black; margin-left: 1%;">Administrador</label>
+                    <label for="validation4" class="form-label" style="font-weight: lighter; color: black; margin-left: 1%;">Administrador</label>
                 </div>
 
                 <div class="col-12" style="text-align: center;">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="submit" [disabled]="adminForm.invalid">
                     Agregar usuario
                     <mat-icon style="vertical-align: middle;">save_alt</mat-icon>
                     </button>
