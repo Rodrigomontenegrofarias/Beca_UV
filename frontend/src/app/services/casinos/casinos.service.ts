@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Casino} from '../../models/casino';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class CasinoService {
 
   constructor(private http: HttpClient) { }
 
-  url_api = 'http://localhost:4000/casinos'
+  url_api = environment.backend+'/casinos'
 
   selectCasino: Casino = {
     nombre: '',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Alumno} from '../../models/alumno';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AlumnoService {
 
   constructor(private http: HttpClient) { }
 
-  url_api = 'http://localhost:4000/alumnos'
+  url_api = environment.backend+'/alumnos'
 
   selectAlumno: Alumno = {
     nombre: '',
