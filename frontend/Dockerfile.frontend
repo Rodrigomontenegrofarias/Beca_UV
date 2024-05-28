@@ -1,0 +1,24 @@
+#dockerfile.backend
+# Usa una imagen de Node.js como base 
+FROM node:14.17.3
+
+# Establece el directorio de trabajo en /app
+WORKDIR /app
+
+# Copia el archivo package.json y package-lock.json
+COPY package*.json ./
+
+# Instala las dependencias
+RUN npm install
+
+# Copia el resto de los archivos del proyecto
+COPY . .
+
+# Compila el proyecto
+#RUN npm run build --prod
+
+# Expone el puerto 80
+EXPOSE 4200
+
+# Inicia el servidor web
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0"]
