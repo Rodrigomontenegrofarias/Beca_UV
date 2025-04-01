@@ -13,6 +13,10 @@
 
 2. docker compose build
 
+### Configuracion de red.
+
+3. docker network create nginx-proxy
+
 ### Deploya automaticamente como demonio los servicios e imagenes mencionadas en el docker-compose.
 
 4. docker compose up -d 
