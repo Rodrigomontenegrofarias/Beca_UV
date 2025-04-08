@@ -23,7 +23,7 @@ services:
         reservations:
           memory: 6G
 
-  # Servicio para inicializar la base de datos
+  ## Servicio para inicializar la base de datos
   init-db:
     image: mcr.microsoft.com/mssql-tools
     platform: linux/amd64
